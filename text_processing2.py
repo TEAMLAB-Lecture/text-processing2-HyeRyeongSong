@@ -75,6 +75,7 @@ def to_camel_case(underscore_str):
     """
 
     buff = underscore_str.lower().split('_')
+    print(buff)
 
     # alreadyCamel
     if len(buff) == 1:
@@ -84,9 +85,27 @@ def to_camel_case(underscore_str):
     while '' in buff:
         buff.remove('')
 
+    # if "_______"
+    if len(buff) == 0:
+        return ""
+
     camelcase_str = buff[0]
     for element in buff[1:]:
         element = element.title()
         camelcase_str += element
 
     return camelcase_str
+
+'''
+def main():
+    print(digits_to_words("Zip Code: 19104"))
+    print(digits_to_words("Pi is 3.1415..."))
+    print(to_camel_case("to_camel_case"))
+    print(to_camel_case("__EXAMPLE__NAME__"))
+    print(to_camel_case("alreadyCamel"))
+    print(to_camel_case("_______"))
+
+
+if __name__ == "__main__":
+    main()
+'''
