@@ -28,7 +28,16 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    digit_string = ""
+    digits = {'0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four', \
+              '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine'}
+
+    for char in input_string:
+        if char in digits.keys():
+            digit_string += (digits[char] + ' ')
+
+    digit_string = digit_string.strip()
+
     return digit_string
 
 
@@ -64,5 +73,39 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+
+    buff = underscore_str.lower().split('_')
+    print(buff)
+
+    # alreadyCamel
+    if len(buff) == 1:
+        return underscore_str
+
+    # else
+    while '' in buff:
+        buff.remove('')
+
+    # if "_______"
+    if len(buff) == 0:
+        return ""
+
+    camelcase_str = buff[0]
+    for element in buff[1:]:
+        element = element.title()
+        camelcase_str += element
+
     return camelcase_str
+
+'''
+def main():
+    print(digits_to_words("Zip Code: 19104"))
+    print(digits_to_words("Pi is 3.1415..."))
+    print(to_camel_case("to_camel_case"))
+    print(to_camel_case("__EXAMPLE__NAME__"))
+    print(to_camel_case("alreadyCamel"))
+    print(to_camel_case("_______"))
+
+
+if __name__ == "__main__":
+    main()
+'''
